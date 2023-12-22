@@ -2,7 +2,6 @@ package httpagent
 
 import (
 	"net/http"
-	"net/url"
 )
 
 // Default 获取默认的 Clients 对象
@@ -41,16 +40,25 @@ type myClient struct {
 
 func (inst *myClient) _impl() Client { return inst }
 
+func (inst *myClient) createRequest(src *Request) (*http.Request, error) {
+
+	ctx := src.Context
+	url := src.URL
+	method := src.Method
+	body1 := src.Body
+
+	if ctx == nil {
+		return http.NewRequest(method, url, body1)
+	}
+	return http.NewRequestWithContext(ctx, method, url, body1)
+}
+
 func (inst *myClient) prepareRequest(src *Request) (*http.Request, error) {
 
-	addr, err := url.Parse(src.URL)
+	dst, err := inst.createRequest(src)
 	if err != nil {
 		return nil, err
 	}
-
-	dst := new(http.Request)
-	dst.Method = src.Method
-	dst.URL = addr
 
 	// headers
 	headers := src.Headers.Table()

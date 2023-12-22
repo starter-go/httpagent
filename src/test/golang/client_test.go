@@ -38,3 +38,22 @@ func TestClients(t *testing.T) {
 	t.Log("Response: HTTP ", resp.Message)
 	t.Log(text)
 }
+
+func TestPOST(t *testing.T) {
+
+	url := "https://gitee.com/starter-go/bad"
+	client := httpagent.Default().GetClient()
+
+	req := &httpagent.Request{
+		Method: http.MethodPost,
+		URL:    url,
+	}
+
+	resp, err := client.Execute(req)
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+	t.Log(resp.Message)
+}
