@@ -4,11 +4,6 @@ import (
 	"net/http"
 )
 
-// Default 获取默认的 Clients 对象
-func Default() Clients {
-	return &theDefaultClients
-}
-
 var theDefaultClients myClientFactory
 
 ////////////////////////////////////////////////////////////////////////////////
