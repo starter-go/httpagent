@@ -67,8 +67,8 @@ type filterChainNode struct {
 
 func (inst *filterChainNode) _impl() FilterChain { return inst }
 
-func (inst *filterChainNode) Execute(req *Request) (*Response, error) {
-	return inst.filter.Handle(req, inst.next)
+func (inst *filterChainNode) Handle(c *Context) error {
+	return inst.filter.Handle(c, inst.next)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -77,8 +77,8 @@ type filterChainEnding struct{}
 
 func (inst *filterChainEnding) _impl() FilterChain { return inst }
 
-func (inst *filterChainEnding) Execute(req *Request) (*Response, error) {
-	return nil, fmt.Errorf("httpagent.FilterChain: 没有能处理该请求的过滤器")
+func (inst *filterChainEnding) Handle(c *Context) error {
+	return fmt.Errorf("httpagent.FilterChain: 没有能处理该请求的过滤器")
 }
 
 ////////////////////////////////////////////////////////////////////////////////

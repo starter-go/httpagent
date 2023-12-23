@@ -37,9 +37,9 @@ func TestFilterChain(t *testing.T) {
 		Filter:  &testingFilter{order: 7},
 	})
 
-	req := new(Request)
+	req := new(Context)
 	chain := b.Create()
-	chain.Execute(req)
+	chain.Handle(req)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -48,9 +48,9 @@ type testingFilter struct {
 	order int
 }
 
-func (inst *testingFilter) Handle(req *Request, chain FilterChain) (*Response, error) {
+func (inst *testingFilter) Handle(c *Context, chain FilterChain) error {
 
 	fmt.Println("", inst.order)
 
-	return chain.Execute(req)
+	return chain.Handle(c)
 }
