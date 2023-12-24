@@ -5,6 +5,50 @@ import (
      "github.com/starter-go/application"
 )
 
+// type p19f7fd0ff.CompleteURLFilter in package:github.com/starter-go/httpagent/src/main/golang/com
+//
+// id:com-19f7fd0ff45d1301-com-CompleteURLFilter
+// class:class-dea5a0f47697e78c03558bf00bc7ff9c-FilterRegistry
+// alias:
+// scope:singleton
+//
+type p19f7fd0ff4_com_CompleteURLFilter struct {
+}
+
+func (inst* p19f7fd0ff4_com_CompleteURLFilter) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-19f7fd0ff45d1301-com-CompleteURLFilter"
+	r.Classes = "class-dea5a0f47697e78c03558bf00bc7ff9c-FilterRegistry"
+	r.Aliases = ""
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p19f7fd0ff4_com_CompleteURLFilter) new() any {
+    return &p19f7fd0ff.CompleteURLFilter{}
+}
+
+func (inst* p19f7fd0ff4_com_CompleteURLFilter) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p19f7fd0ff.CompleteURLFilter)
+	nop(ie, com)
+
+	
+    com.BaseURL = inst.getBaseURL(ie)
+
+
+    return nil
+}
+
+
+func (inst*p19f7fd0ff4_com_CompleteURLFilter) getBaseURL(ie application.InjectionExt)string{
+    return ie.GetString("${httpagent.filters.complete-url-filter.base-url}")
+}
+
+
+
 // type p19f7fd0ff.DefaultClient in package:github.com/starter-go/httpagent/src/main/golang/com
 //
 // id:com-19f7fd0ff45d1301-com-DefaultClient

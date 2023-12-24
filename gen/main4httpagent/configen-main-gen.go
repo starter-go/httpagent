@@ -30,6 +30,7 @@ func (inst *autoRegistrar) register(factory comFactory) error {
 func (inst*autoRegistrar) addAll() error {
 
     
+    inst.register(&p19f7fd0ff4_com_CompleteURLFilter{})
     inst.register(&p19f7fd0ff4_com_DefaultClient{})
     inst.register(&p19f7fd0ff4_com_DefaultClientFactory{})
     inst.register(&p19f7fd0ff4_com_HTTPStatusErrorFilter{})
