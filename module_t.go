@@ -8,8 +8,8 @@ import (
 
 const (
 	theModuleName    = "github.com/starter-go/httpagent"
-	theModuleVersion = "v0.0.4"
-	theModuleRev     = 4
+	theModuleVersion = "v0.0.5"
+	theModuleRev     = 5
 )
 
 ////////////////////////////////////////////////////////////////////////////////
