@@ -24,11 +24,11 @@ func (inst *myClientFacade) Execute(req *Request) (*Response, error) {
 	c.Request = req
 
 	err := inst.clientContext.Chain.Handle(c)
-	if err != nil {
-		return nil, err
+
+	if err == nil {
+		if c.Response == nil {
+			return nil, fmt.Errorf("no Response")
+		}
 	}
-	if c.Response == nil {
-		return nil, fmt.Errorf("no Response")
-	}
-	return c.Response, nil
+	return c.Response, err
 }

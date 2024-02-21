@@ -13,7 +13,8 @@ type TestFilters struct {
 	//starter:component
 	_as func(units.Units) //starter:as(".")
 
-	Client httpagent.Client //starter:inject("#")
+	Client  httpagent.Client  //starter:inject("#")
+	Clients httpagent.Clients //starter:inject("#")
 
 }
 

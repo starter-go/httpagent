@@ -37,6 +37,7 @@ func (inst* p0fa9b76eac_com_TestFilters) inject(injext application.InjectionExt,
 
 	
     com.Client = inst.getClient(ie)
+    com.Clients = inst.getClients(ie)
 
 
     return nil
@@ -45,6 +46,11 @@ func (inst* p0fa9b76eac_com_TestFilters) inject(injext application.InjectionExt,
 
 func (inst*p0fa9b76eac_com_TestFilters) getClient(ie application.InjectionExt)pdea5a0f47.Client{
     return ie.GetComponent("#alias-dea5a0f47697e78c03558bf00bc7ff9c-Client").(pdea5a0f47.Client)
+}
+
+
+func (inst*p0fa9b76eac_com_TestFilters) getClients(ie application.InjectionExt)pdea5a0f47.Clients{
+    return ie.GetComponent("#alias-dea5a0f47697e78c03558bf00bc7ff9c-Clients").(pdea5a0f47.Clients)
 }
 
 
