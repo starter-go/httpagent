@@ -1,4 +1,4 @@
-package golang
+package got
 
 import (
 	"testing"
@@ -15,11 +15,13 @@ func TestFilters(t *testing.T) {
 		"--test.units.run-all=1",
 		"--test.units.run-list=testFilters",
 	}
-
 	m := httpagent.ModuleForTest()
-	r := units.NewRunner()
-	r.Testing(t)
-	r.EnablePanic(true)
-	r.Dependencies(m)
-	r.Run(args)
+	c := new(units.Context)
+
+	c.T = t
+	c.UsePanic = true
+	c.Arguments = args
+	c.Module = m
+
+	units.Run(c)
 }

@@ -21,3 +21,6 @@
 go.work
 
 .vscode
+output
+__debug_*
+

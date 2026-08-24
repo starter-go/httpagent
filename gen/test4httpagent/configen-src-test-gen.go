@@ -8,7 +8,7 @@ import (
 // type p0fa9b76ea.TestFilters in package:github.com/starter-go/httpagent/src/test/golang/com
 //
 // id:com-0fa9b76eacbd9771-com-TestFilters
-// class:class-0dc072ed44b3563882bff4e657a52e62-Units
+// class:class-0dc072ed44b3563882bff4e657a52e62-Unit
 // alias:
 // scope:singleton
 //
@@ -18,7 +18,7 @@ type p0fa9b76eac_com_TestFilters struct {
 func (inst* p0fa9b76eac_com_TestFilters) register(cr application.ComponentRegistry) error {
 	r := cr.NewRegistration()
 	r.ID = "com-0fa9b76eacbd9771-com-TestFilters"
-	r.Classes = "class-0dc072ed44b3563882bff4e657a52e62-Units"
+	r.Classes = "class-0dc072ed44b3563882bff4e657a52e62-Unit"
 	r.Aliases = ""
 	r.Scope = "singleton"
 	r.NewFunc = inst.new

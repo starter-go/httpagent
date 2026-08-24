@@ -1,6 +1,7 @@
 package com
 
 import (
+	"context"
 	"net/http"
 
 	"github.com/starter-go/httpagent"
@@ -11,27 +12,27 @@ import (
 type TestFilters struct {
 
 	//starter:component
-	_as func(units.Units) //starter:as(".")
+	_as func(units.Unit) //starter:as(".")
 
 	Client  httpagent.Client  //starter:inject("#")
 	Clients httpagent.Clients //starter:inject("#")
 
 }
 
-func (inst *TestFilters) _impl() units.Units { return inst }
+// ListRegistrations implements [units.Unit].
+func (inst *TestFilters) ListRegistrations(list []*units.Registration) []*units.Registration {
 
-// Units ...
-func (inst *TestFilters) Units(list []*units.Registration) []*units.Registration {
 	r1 := &units.Registration{
 		Name:     "testFilters",
 		Enabled:  true,
 		Priority: 0,
-		Test:     inst.testFilters,
+		Do:       inst.testFilters,
 	}
-	return []*units.Registration{r1}
+
+	return append(list, r1)
 }
 
-func (inst *TestFilters) testFilters() error {
+func (inst *TestFilters) testFilters(c context.Context) error {
 
 	req := new(httpagent.Request)
 	req.URL = "https://gitee.com/starter-go"
@@ -44,6 +45,10 @@ func (inst *TestFilters) testFilters() error {
 	}
 
 	return err
+}
+
+func (inst *TestFilters) _impl() units.Unit {
+	return inst
 }
 
 ////////////////////////////////////////////////////////////////////////////////
